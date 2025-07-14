@@ -1,0 +1,13 @@
+const ROOT_PATH = 'http://localhost:3000';
+const APPLICATION_NAME = process.env.NEXT_PUBLIC_APPLICATION_NAME;
+const OLLAMA_URL = process.env.OLLAMA_URL;
+const OLLAMA_MODEL = process.env.OLLAMA_MODEL;
+const OLLAMA_EMBEDDINGS_MODEL = process.env.OLLAMA_EMBEDDINGS_MODEL;
+
+export {
+    ROOT_PATH,
+    APPLICATION_NAME,
+    OLLAMA_URL,
+    OLLAMA_MODEL,
+    OLLAMA_EMBEDDINGS_MODEL,
+}

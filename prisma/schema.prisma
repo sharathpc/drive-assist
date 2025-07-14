@@ -1,0 +1,54 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+   output = "../generated"
+   binaryTargets = ["native", "debian-openssl-1.1.x"]
+}
+
+datasource db {
+    provider = "mongodb"
+    url      = env("MONGODB_URL")
+}
+
+model Chat {
+    id        String    @id @default(auto()) @map("_id") @db.ObjectId
+    userId    String
+    messages  Message[]
+    createdAt DateTime  @default(now())
+}
+
+model Message {
+    id          String       @id @default(auto()) @map("_id") @db.ObjectId
+    role        String
+    content     String
+    data        MessageData?
+    annotations Json[]
+    createdAt   DateTime     @default(now())
+
+    chatId String @db.ObjectId
+    chat   Chat   @relation(fields: [chatId], references: [id], onDelete: Cascade)
+}
+
+model MessageData {
+    id        String   @id @default(auto()) @map("_id") @db.ObjectId
+    feedback  Boolean?
+    createdAt DateTime @default(now())
+
+    // questionId String  @unique @db.ObjectId
+    // question   Message @relation(name: "question", fields: [questionId], references: [id], onDelete: Cascade)
+
+    messageId String  @unique @db.ObjectId
+    message   Message @relation(fields: [messageId], references: [id], onDelete: Cascade)
+}
+
+model Question {
+    id       String @id @default(auto()) @map("_id") @db.ObjectId
+    sequence Int
+    content  String
+
+    question  Question?  @relation(name: "questions", fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+    questions Question[] @relation(name: "questions")
+    parentId  String?    @db.ObjectId
+}
