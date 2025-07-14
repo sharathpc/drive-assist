@@ -9,7 +9,7 @@ pid=$!
 sleep 5
 
 echo "Retrive LLM model..."
-ollama pull deepseek-r1:1.5b
+ollama pull phi:latest
 echo "Done!"
 
 echo "Retrive Embeddings model..."

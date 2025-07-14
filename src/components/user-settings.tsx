@@ -13,7 +13,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
 
 export const UserSettings = () => {
-  const { userName, signoutRedirect } = useUserData();
+  const { userName } = useUserData();
 
   return (
     <DropdownMenu>
@@ -40,7 +40,7 @@ export const UserSettings = () => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48 p-2">
-        <DropdownMenuItem onSelect={() => signoutRedirect()}>
+        <DropdownMenuItem onSelect={() => { }}>
           <div className="flex w-full gap-2 p-1 items-center cursor-pointer">
             <ExitIcon className="w-4 h-4" />
             Logout

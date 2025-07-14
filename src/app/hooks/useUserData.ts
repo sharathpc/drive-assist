@@ -1,12 +1,6 @@
 export const useUserData = () => {
-    // const { user, signoutRedirect } = useAuth();
-    // const userName = (user?.profile.firstName as string) || '';
+    const userId = '8045-ab56-hu56-bdgt6-7dbd6';
+    const userName = 'Sharath Chandra';
 
-    const userName = '';
-    
-    const signoutRedirect = () => {
-        
-    }
-
-    return { userName, signoutRedirect };
+    return { userId, userName };
 };

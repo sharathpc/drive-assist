@@ -11,12 +11,14 @@ import {
 } from "@/components/ui/resizable";
 import { cn } from "@/lib/utils";
 import { ChatSidebar } from "@/components/chat/chat-sidebar";
+import { useUserData } from "../hooks/useUserData";
 
 export default function DashboardLayout({
     children,
 }: {
     children: React.ReactNode
 }) {
+    const { userId } = useUserData();
     const navCollapsedSize = 10;
     const defaultLayout = [20, 80];
     const [pageLoading, setPageloading] = useState<boolean>(true);
@@ -27,7 +29,7 @@ export default function DashboardLayout({
         if (false) {
             // login
         } else {
-            setUserId('UserId');
+            setUserId(userId);
             setTimeout(() => setPageloading(false));
         }
     }, []);

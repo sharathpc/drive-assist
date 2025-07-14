@@ -30,18 +30,12 @@ export const ChatInitialQuestions = ({ onClickQuestion }: ChatInitialQuestionsPr
           </p>
         </div>
 
-        <div className="w-full px-4 sm:max-w-3xl grid gap-2 sm:grid-cols-3 sm:gap-4 text-sm">
+        <div className="w-full px-4 sm:max-w-3xl flex justify-center gap-2 sm:grid-cols-3 sm:gap-4 text-sm">
           {QUESTIONS_DATA.map((question, index) => {
             const delay = Math.random() * 0.25;
             return (
               <motion.div
                 key={question.content}
-                className={cn(
-                  {
-                    ["col-start-2 col-end-3"]: index === 0,
-                    ["col-start-1"]: index === 1,
-                  },
-                )}
                 initial={{ opacity: 0, scale: 1, y: 10, x: 0 }}
                 animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
                 exit={{ opacity: 0, scale: 1, y: 10, x: 0 }}

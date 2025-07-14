@@ -11,19 +11,21 @@ import {
     ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import { AdminSidebar } from "@/components/admin/admin-sidebar";
+import { useUserData } from "../hooks/useUserData";
 
 export default function DashboardLayout({
     children,
 }: {
     children: React.ReactNode
 }) {
+    const { userId } = useUserData();
     const [pageLoading, setPageloading] = useState<boolean>(true);
 
     useEffect(() => {
         if (false) {
             // login
         } else {
-            setUserId('UserId');
+            setUserId(userId);
             setTimeout(() => setPageloading(false));
         }
     }, []);
